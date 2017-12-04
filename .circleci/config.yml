@@ -1,6 +1,7 @@
 version: 2
 jobs:
-  build:
+
+  java-api-client:
     docker:
       - image: openjdk:7-jdk
     working_directory: ~/examples
@@ -9,3 +10,29 @@ jobs:
       - run:
           name: Build java-api-client example
           command: cd java-api-client && ./mvnw -B install -Dmaven.test.skip=true
+
+  php-syndication:
+    docker:
+      - image: circleci/php:7.0.18-apache
+    working_directory:  ~/examples
+    steps:
+      - checkout
+      - run:
+          name: Install deps
+          command: sudo apt-get update -q && sudo apt-get install -y wget git unzip
+      - run:
+          name: Install composer
+          command: cd php-syndication && ./install-composer.sh
+      - run:
+          name: Update dependencies
+          command: cd php-syndication && ./composer.phar update --no-progress
+      - run:
+          name: Tests
+          command: cd php-syndication && ./vendor/phpunit/phpunit/phpunit --bootstrap vendor/autoload.php tests/
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - java-api-client
+      - php-syndication

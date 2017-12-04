@@ -1,0 +1,11 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: openjdk:7-jdk
+    working_directory: ~/examples
+    steps:
+      - checkout
+      - run:
+          name: Build java-api-client example
+          command: cd java-api-client && ./mvnw -B install -Dmaven.test.skip=true

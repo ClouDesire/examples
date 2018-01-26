@@ -33,7 +33,7 @@ if (is_array($event)) {
         if ($entity == 'Subscription' && ($type == 'MODIFIED' || $type == 'CREATED')) {
             
             //instantiate the Cloudesire API Client
-            $apiClient = new CloudesireAPIClient(API_BASE_URL, API_USERNAME, API_PASSWORD);
+            $apiClient = new Cloudesire\APIClient(API_BASE_URL, API_USERNAME, API_PASSWORD);
 
             //invoke the Cloudesire API in order to retrieve the subscription details
             //subscription data will be returned as object

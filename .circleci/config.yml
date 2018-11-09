@@ -13,13 +13,13 @@ jobs:
 
   php-syndication:
     docker:
-      - image: circleci/php:7.0.18-apache
+      - image: php:7.3-rc-apache
     working_directory:  ~/examples
     steps:
       - checkout
       - run:
           name: Install deps
-          command: sudo apt-get update -q && sudo apt-get install -y wget git unzip
+          command: apt-get update -q && apt-get install -y wget git unzip
       - run:
           name: Install composer
           command: cd php-syndication && ./install-composer.sh

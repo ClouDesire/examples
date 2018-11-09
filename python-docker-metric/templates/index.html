@@ -1,0 +1,21 @@
+$def with (metric_counter_value)
+
+<html>
+<head>
+    <title>Docker metric example app</title>
+</head>
+<body>
+    <p>This is a sample Docker app with custom metrics</p>
+    <p>Current counter metric value is $:metric_counter_value</p>
+    <p><button id="incrementCounter">Increment metric</button></p>
+    <br><br>
+    <p><small>You can obtain the json calling: /metric-gauge and /metric-counter</small></p>
+</body>
+<script>
+    const button = document.getElementById("incrementCounter");
+    button.onclick = () => {
+        return fetch("/metric-counter", {method: "POST"})
+            .then(() => location.reload())
+    }
+</script>
+</html>

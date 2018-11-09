@@ -8,7 +8,7 @@ require 'APIClient.php';
 define('API_BASE_URL', 'https://staging-vendors.cloudesire.com/api/');
 
 //PRODUCTION ENVIRONMENT
-// define('API_BASE_URL', 'https://backend.cloudesire.com/api/');
+// define('API_BASE_URL', 'https://demo-backend.cloudesire.com/api/');
 
 //specify your vendor credentials here
 //remember to change them when you are in the production environment

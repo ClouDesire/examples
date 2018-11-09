@@ -21,7 +21,7 @@ public class ClientTest
         CloudesireClientCallExecutor exec = new CloudesireClientCallExecutor( mapper );
 
         CloudesireClient.Builder builder = new CloudesireClient.Builder()
-                .setBaseUrl( "https://backend.cloudesire.com/api/" )
+                .setBaseUrl( "https://demo-backend.cloudesire.com/api/" )
                 .setMapper( mapper );
         CloudesireClient client = builder.build();
         List<ProductDTO> products = exec.execute( client.getProductApi().getAll() );
